@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .container-app {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Dual-thumb price slider — hide native accent fill (Safari/Chrome teal) */
+  .price-dual-range {
+    accent-color: #2d6a4f;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    touch-action: none;
+  }
+
+  .price-dual-range::-webkit-slider-runnable-track {
+    height: 6px;
+    border: none;
+    border-radius: 9999px;
+    background: transparent;
+  }
+
+  .price-dual-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -7px;
+    height: 20px;
+    width: 20px;
+    border-radius: 9999px;
+    border: 3px solid #ffffff;
+    background-color: #2d6a4f;
+    box-shadow:
+      0 1px 2px rgb(45 106 79 / 18%),
+      0 3px 8px rgb(45 106 79 / 16%);
+    cursor: grab;
+    transition:
+      box-shadow 0.18s ease,
+      background-color 0.18s ease;
+  }
+
+  .price-dual-range::-webkit-slider-thumb:hover {
+    background-color: #245a42;
+    box-shadow:
+      0 2px 6px rgb(45 106 79 / 22%),
+      0 0 0 5px rgb(45 106 79 / 14%);
+  }
+
+  .price-dual-range:active::-webkit-slider-thumb,
+  .price-dual-range::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    background-color: #1b4332;
+    box-shadow:
+      0 2px 8px rgb(45 106 79 / 28%),
+      0 0 0 6px rgb(45 106 79 / 18%);
+  }
+
+  .price-dual-range:focus-visible::-webkit-slider-thumb {
+    box-shadow:
+      0 2px 6px rgb(45 106 79 / 22%),
+      0 0 0 5px rgb(45 106 79 / 22%);
+  }
+
+  .price-dual-range::-moz-range-track {
+    height: 6px;
+    border: none;
+    border-radius: 9999px;
+    background: transparent;
+  }
+
+  .price-dual-range::-moz-range-progress {
+    background: transparent;
+  }
+
+  .price-dual-range::-moz-range-thumb {
+    height: 20px;
+    width: 20px;
+    border: 3px solid #ffffff;
+    border-radius: 9999px;
+    background-color: #2d6a4f;
+    box-shadow:
+      0 1px 2px rgb(45 106 79 / 18%),
+      0 3px 8px rgb(45 106 79 / 16%);
+    cursor: grab;
+  }
+
+  .price-dual-range::-moz-range-thumb:hover {
+    background-color: #245a42;
+    box-shadow:
+      0 2px 6px rgb(45 106 79 / 22%),
+      0 0 0 5px rgb(45 106 79 / 14%);
+  }
+
+  .price-dual-range::-moz-range-thumb:active {
+    cursor: grabbing;
+    background-color: #1b4332;
+    box-shadow:
+      0 2px 8px rgb(45 106 79 / 28%),
+      0 0 0 6px rgb(45 106 79 / 18%);
+  }
+
+  .price-dual-range:focus-visible::-moz-range-thumb {
+    box-shadow:
+      0 2px 6px rgb(45 106 79 / 22%),
+      0 0 0 5px rgb(45 106 79 / 22%);
+  }
+
+  .price-amount-input {
+    line-height: 2.75rem;
+  }
+
+  .price-amount-input::-webkit-outer-spin-button,
+  .price-amount-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .price-amount-input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fade-up 0.45s ease-out both;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(64 145 108 / 0.35) transparent;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heart-pop {
+  0% {
+    transform: scale(0.7);
+  }
+  55% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@layer utilities {
+  .animate-heart-pop {
+    animation: heart-pop 0.28s ease-out;
+  }
+
+  .animate-ken-burns {
+    animation: ken-burns 14s ease-in-out infinite alternate;
+  }
+
+  .animate-float-slow {
+    animation: float-orb 7s ease-in-out infinite;
+  }
+
+  .animate-float-slower {
+    animation: float-orb 10s ease-in-out infinite;
+  }
+
+  .animate-login-in {
+    animation: fade-up 0.55s ease-out both;
+  }
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1.06) translate(0, 0);
+  }
+  to {
+    transform: scale(1.16) translate(-1.6%, -1%);
+  }
+}
+
+@keyframes float-orb {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ken-burns,
+  .animate-float-slow,
+  .animate-float-slower,
+  .animate-login-in {
+    animation: none;
+  }
+}
